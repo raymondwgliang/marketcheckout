@@ -31,6 +31,13 @@ public class SimulatorPriceScanner {
 		checkoutService.updateBasket(basket, "C");
 		checkoutService.calculateTotalPriceAfterAddItem(basket, "D");
 		checkoutService.updateBasket(basket, "D");
+		checkoutService.calculateTotalPriceAfterAddItem(basket, "B");
+		checkoutService.updateBasket(basket, "B");
+		checkoutService.calculateTotalPriceAfterAddItem(basket, "B");
+		checkoutService.updateBasket(basket, "B");
+		checkoutService.calculateTotalPriceAfterAddItem(basket, "B");
+		checkoutService.updateBasket(basket, "B");
+
 	}
 
 }
