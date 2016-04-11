@@ -215,6 +215,46 @@ public class CheckoutServiceTest {
 	}
 	
 	/**
+	 * Test Case for adding an item B to the existing basket with items
+	 * A,A,A,B,B,C,C,D,D Expected result: 275
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testTotalCostWhenBasketHas3A2B2C2DAfterAddItemB() throws Exception {
+		System.out.println("testTotalCostWhenBasketHas[3A2B2C2D]AfterAddItem[B]");
+		basket = new Basket();
+		HashMap<String, Integer> items = new HashMap<String, Integer>();
+		items.put("A", 3);
+		items.put("B", 2);
+		items.put("C", 2);
+		items.put("D", 2);
+		basket.setItems(items);
+		int totalPrice = checkoutService.calculateTotalPriceAfterAddItem(basket, "B");
+		Assert.assertEquals(275, totalPrice);
+	}
+	
+	/**
+	 * Test Case for adding an item B to the existing basket with items
+	 * A,A,A,B,B,B,C,C,D,D Expected result: 290
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testTotalCostWhenBasketHas3A3B2C2DAfterAddItemB() throws Exception {
+		System.out.println("testTotalCostWhenBasketHas[3A3B2C2D]AfterAddItem[B]");
+		basket = new Basket();
+		HashMap<String, Integer> items = new HashMap<String, Integer>();
+		items.put("A", 3);
+		items.put("B", 3);
+		items.put("C", 2);
+		items.put("D", 2);
+		basket.setItems(items);
+		int totalPrice = checkoutService.calculateTotalPriceAfterAddItem(basket, "B");
+		Assert.assertEquals(290, totalPrice);
+	}
+	
+	/**
 	 * Test Case for adding an item A to the existing basket with items
 	 * A,B,C,D add item A
 	 * 
