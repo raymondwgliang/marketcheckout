@@ -45,10 +45,9 @@ public class CheckoutService {
 			Map.Entry<String, Integer> entryItem = (Map.Entry<String, Integer>) it.next();
 			int count = entryItem.getValue();
 			totalReturn += priceDao.getUnitPrice(entryItem.getKey()) * count;
-			System.out.println("existing item=" + entryItem.getKey()+","+entryItem.getValue());
+			System.out.println("existing item=" + entryItem.getKey()+",quantity="+entryItem.getValue());
 			if (entryItem.getKey().equals(addItem)) {
 				existCountOfAddItem = entryItem.getValue();
-				System.out.println("exist count of add item[" + addItem + "]=" + existCountOfAddItem);
 			}
 			if (priceDao.getSpecialPriceOfferFactor(entryItem.getKey()) != 0) {
 				if (entryItem.getValue() / priceDao.getSpecialPriceOfferFactor(entryItem.getKey()) > 0) {
@@ -62,7 +61,7 @@ public class CheckoutService {
 		totalReturn += priceDao.getUnitPrice(addItem);
 		// current quantity of the new added item plus ONE
 		existCountOfAddItem++;
-		System.out.println("current count after add item[" + addItem + "]=" + existCountOfAddItem);
+		System.out.println("after adding current quantity of item[" + addItem + "]=" + existCountOfAddItem);
 		// if the quantity meets the special offer condition give a deduction
 		// from the total cost value
 		if (priceDao.getSpecialPriceOfferFactor(addItem) != 0) {
