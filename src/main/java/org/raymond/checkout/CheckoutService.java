@@ -51,7 +51,8 @@ public class CheckoutService {
 			}
 			if (priceDao.getSpecialPriceOfferFactor(entryItem.getKey()) != 0) {
 				if (entryItem.getValue() % priceDao.getSpecialPriceOfferFactor(entryItem.getKey()) == 0) {
-					totalReturn -= priceDao.getSpecialPriceOfferDeduction(entryItem.getKey());
+					totalReturn -= priceDao.getSpecialPriceOfferDeduction(entryItem.getKey())*
+							(entryItem.getValue() / priceDao.getSpecialPriceOfferFactor(entryItem.getKey()));
 				}
 			}
 		}
@@ -65,7 +66,8 @@ public class CheckoutService {
 		// from the total cost value
 		if (priceDao.getSpecialPriceOfferFactor(addItem) != 0) {
 			if (existCountOfAddItem % priceDao.getSpecialPriceOfferFactor(addItem) == 0) {
-				totalReturn -= priceDao.getSpecialPriceOfferDeduction(addItem);
+				totalReturn -= priceDao.getSpecialPriceOfferDeduction(addItem)*
+						(existCountOfAddItem / priceDao.getSpecialPriceOfferFactor(addItem));
 			}
 		}
 		System.out.println("final total value cost =" + totalReturn);
